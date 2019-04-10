@@ -27,18 +27,27 @@ namespace classes
         LastName = "Armisen",
         JobTitle = "Actor"
       };
-
+      Company WarnersCompany = new Company(DateTime.Now, "Warner's Company" );
+      Company DooDrop = new Company(DateTime.Now, "DooDrop");
       Company CrazyEight = new Company(DateTime.Now, "Crazy Eight");
-      CrazyEight.addEmployee(FredArmisen);
+      List<Company> CompanyList = new List<Company>();
+      WarnersCompany.addEmployee(FredArmisen);
       CrazyEight.addEmployee(SteveJobs);
-      CrazyEight.addEmployee(DeannaSienna);
+      DooDrop.addEmployee(DeannaSienna);
 
-    foreach (Employee employee in CrazyEight.Employees)
-     {
-        Console.WriteLine($@"
-        My name is {employee.FirstName} {employee.LastName}.
-        My job title is {employee.JobTitle}.
+      CompanyList.Add(WarnersCompany);
+      CompanyList.Add(DooDrop);
+      CompanyList.Add(CrazyEight);
+
+    foreach (Company currentCompany in CompanyList){Console.WriteLine($@"
+Company Name{currentCompany.CompanyName}
+Company Date{currentCompany.DateFounded}
         ");
+       foreach (Employee employee in currentCompany.Employees){Console.WriteLine($@"
+My name is {employee.FirstName} {employee.LastName}.
+My job title is {employee.JobTitle}.");
+
+       }
     }
 
 
